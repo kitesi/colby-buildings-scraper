@@ -77,7 +77,7 @@ def main(building, start_month, start_day, start_year, end_month, end_day, end_y
                             'event_info': event_info
                         }]
 
-    match_time_re = r"(\d{2}\/\d{2})\s*(\d{1,2}:\d{2}-\d{1,2}:\d{2})\s*(AM|PM)"
+    match_time_re = r"(\d{2}\/\d{2})\s*(\d{1,2}:\d{1,2}-\d{1,2}:\d{2})\s*(AM|PM)"
 
     for room, room_events in events.items():
         print(f"Room: {room}")
@@ -86,6 +86,8 @@ def main(building, start_month, start_day, start_year, end_month, end_day, end_y
             if match_time:
                 d, t, m = match_time.groups()
                 print(f" - {d} {t} {m}")
+            else:
+                print(f" - {event['event_info']}")
         print()
 
     driver.quit()
